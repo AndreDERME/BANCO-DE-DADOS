@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Membro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            transition: background-color 0.5s ease;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+            width: 550px;
+            max-width: 100%;
+            transition: box-shadow 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards 0.2s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .container:hover {
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 30px;
+            transition: color 0.3s ease;
+            animation: slideInDown 0.5s ease;
+        }
+
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-50px);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        .form-group:nth-child(1) { animation-delay: 0.4s; }
+        .form-group:nth-child(2) { animation-delay: 0.6s; }
+        .form-group:nth-child(3) { animation-delay: 0.8s; }
+        .form-group:nth-child(4) { animation-delay: 1.0s; }
+        .form-group:nth-child(5) { animation-delay: 1.2s; }
+        .form-group:nth-child(6) { animation-delay: 1.4s; }
+        .form-group:nth-child(7) { animation-delay: 1.6s; }
+        .form-group:nth-child(8) { animation-delay: 1.8s; }
+        .form-group:nth-child(9) { animation-delay: 2.0s; }
+        .form-group:nth-child(10) { animation-delay: 2.2s; }
+
+
+        label {
+            margin-bottom: 8px;
+            color: #4a5568;
+            font-weight: 600;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        input, select {
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            width: calc(100% - 24px);
+            box-sizing: border-box;
+            animation: slideInLeft 0.3s ease;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-20px);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.15);
+        }
+
+        button {
+            padding: 12px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            width: 100%;
+            box-sizing: border-box;
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:active {
+            background-color: #388e3c;
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        button:disabled {
+            background-color: #cbd5e0;
+            cursor: not-allowed;
+            opacity: 0.7;
+            transform: none;
+            box-shadow: none;
+            animation: none;
+        }
+
+        .error-message {
+            color: #e53e3e;
+            margin-top: 8px;
+            font-size: 14px;
+            padding: 8px;
+            background-color: #fed7d7;
+            border-radius: 6px;
+            border: 1px solid #fecaca;
+            animation: fadeIn 0.3s ease, slideInRight 0.3s ease;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(20px);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+
+        .success-message {
+            color: #38a169;
+            margin-top: 8px;
+            font-size: 14px;
+            padding: 8px;
+            background-color: #f0fdf4;
+            border-radius: 6px;
+            border: 1px solid #c6f0d7;
+            animation: fadeIn 0.3s ease, slideInLeft 0.3s ease;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-20px);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+       
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            input, select, button {
+                padding: 10px;
+            }
+            button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Adicionar Novo Membro</h1>
+        <form id="form-adicionar-membro">
+            <div class="form-group">
+                <label for="nome_completo">Nome Completo:</label>
+                <input type="text" id="nome_completo" name="nome_completo" required value="{{ nome_completo }}">
+                <div id="nome_completo-erro" class="error-message"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="data_nascimento">Data de Nascimento:</label>
+                <input type="date" id="data_nascimento" name="data_nascimento" value="{{ data_nascimento }}">
+            </div>
+
+            <div class="form-group">
+                <label for="sexo">Sexo:</label>
+                <select id="sexo" name="sexo">
+                    <option value="">Selecione</option>
+                    <option value="Masculino" {% if sexo == 'Masculino' %}selected{% endif %}>Masculino</option>
+                    <option value="Feminino" {% if sexo == 'Feminino' %}selected{% endif %}>Feminino</option>
+                    <option value="Outro" {% if sexo == 'Outro' %}selected{% endif %}>Outro</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="estado_civil">Estado Civil:</label>
+                <select id="estado_civil" name="estado_civil">
+                    <option value="">Selecione</option>
+                    <option value="Solteiro(a)" {% if estado_civil == 'Solteiro(a)' %}selected{% endif %}>Solteiro(a)</option>
+                    <option value="Casado(a)" {% if estado_civil == 'Casado(a)' %}selected{% endif %}>Casado(a)</option>
+                    <option value="Divorciado(a)" {% if estado_civil == 'Divorciado(a)' %}selected{% endif %}>Divorciado(a)</option>
+                    <option value="Viúvo(a)" {% if estado_civil == 'Viúvo(a)' %}selected{% endif %}>Viúvo(a)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="endereco" value=" endereco ">
+            </div>
+
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="text" id="telefone" name="telefone" placeholder="(XX) XXXX-XXXX" value="telefone">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required value="{{ email }}">
+                <div id="email-erro" class="error-message"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="data_membresia">Data de Membresia:</label>
+                <input type="date" id="data_membresia" name="data_membresia" value="{{ data_membresia }}">
+            </div>
+
+            <div class="form-group">
+                <label for="grupos">Grupos/Ministérios (separados por vírgula):</label>
+                <input type="text" id="grupos" name="grupos" value="{{ grupos }}">
+            </div>
+
+            <div id="mensagem-erro" class="error-message">{{ mensagem_erro }}</div>
+            <div id="mensagem-sucesso" class="success-message"></div>
+
+            <button type="submit">Adicionar Membro</button>
+        </form>
+    </div>
+
+    <script>
+        const formAdicionarMembro = document.getElementById('form-adicionar-membro');
+        const nomeCompletoInput = document.getElementById('nome_completo');
+        const emailInput = document.getElementById('email');
+        const mensagemErro = document.getElementById('mensagem-erro');
+        const mensagemSucesso = document.getElementById('mensagem-sucesso');
+        const botaoSubmit = document.querySelector('button[type="submit"]');
+        const campos = ['nome_completo', 'email'];
+
+        function validarNomeCompleto() {
+            const nomeCompleto = nomeCompletoInput.value.trim();
+            if (nomeCompleto === "") {
+                document.getElementById('nome_completo-erro').textContent = "Nome Completo é obrigatório";
+                nomeCompletoInput.classList.add('input-erro');
+                return false;
+            } else {
+                document.getElementById('nome_completo-erro').textContent = "";
+                nomeCompletoInput.classList.remove('input-erro');
+                return true;
+            }
+        }
+
+        function validarEmail() {
+            const email = emailInput.value.trim();
+            const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+            if (email === "") {
+                document.getElementById('email-erro').textContent = "Email é obrigatório";
+                emailInput.classList.add('input-erro');
+                return false;
+            } else if (!emailRegex.test(email)) {
+                document.getElementById('email-erro').textContent = "Email inválido";
+                emailInput.classList.add('input-erro');
+                return false;
+            } else {
+                document.getElementById('email-erro').textContent = "";
+                emailInput.classList.remove('input-erro');
+                return true;
+            }
+        }
+
+        nomeCompletoInput.addEventListener('blur', validarNomeCompleto);
+        emailInput.addEventListener('blur', validarEmail);
+
+        formAdicionarMembro.addEventListener('submit', (event) => {
+            event.preventDefault();
+            mensagemErro.textContent = "";
+            mensagemSucesso.textContent = "";
+            botaoSubmit.disabled = true;
+
+            let formValido = true;
+            campos.forEach(campo => {
+                const funcaoValidacao = window[`validar${campo.charAt(0).toUpperCase() + campo.slice(1)}`];
+                if (typeof funcaoValidacao === 'function') {
+                    formValido = formValido && funcaoValidacao();
+                }
+            });
+
+            if (!formValido) {
+                botaoSubmit.disabled = false;
+                return;
+            }
+
+            const nomeCompleto = nomeCompletoInput.value.trim();
+            const dataNascimento = document.getElementById('data_nascimento').value;
+            const sexo = document.getElementById('sexo').value;
+            const estadoCivil = document.getElementById('estado_civil').value;
+            const endereco = document.getElementById('endereco').value;
+            const telefone = document.getElementById('telefone').value;
+            const email = emailInput.value.trim();
+            const dataMembresia = document.getElementById('data_membresia').value;
+            const grupos = document.getElementById('grupos').value;
+
+            
+            console.log("Dados do formulário:", {
+                nomeCompleto,
+                dataNascimento,
+                sexo,
+                estadoCivil,
+                endereco,
+                telefone,
+                email,
+                dataMembresia,
+                grupos
+            });
+
+            mensagemSucesso.textContent = `Membro ${nomeCompleto} adicionado com sucesso!`;
+            mensagemSucesso.style.opacity = 0;
+            mensagemSucesso.style.transform = 'translateY(-10px)';
+            setTimeout(() => {
+                mensagemSucesso.style.opacity = 1;
+                mensagemSucesso.style.transform = 'translateY(0)';
+            }, 100);
+
+
+            setTimeout(() => {
+                formAdicionarMembro.reset();
+                botaoSubmit.disabled = false;
+                 mensagemSucesso.style.opacity = 0;
+                 mensagemSucesso.style.transform = 'translateY(10px)';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
