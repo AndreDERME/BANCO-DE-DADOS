@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6;
+            background: linear-gradient( rgb(80, 216, 141),);
             margin: 0;
             padding: 0;
             display: flex;
@@ -226,13 +226,13 @@
         <form id="form-adicionar-membro">
             <div class="form-group">
                 <label for="nome_completo">Nome Completo:</label>
-                <input type="text" id="nome_completo" name="nome_completo" required value="{{ nome_completo }}">
+                <input type="text" id="nome_completo" name="nome_completo" required value="  ">
                 <div id="nome_completo-erro" class="error-message"></div>
             </div>
 
             <div class="form-group">
                 <label for="data_nascimento">Data de Nascimento:</label>
-                <input type="date" id="data_nascimento" name="data_nascimento" value="{{ data_nascimento }}">
+                <input type="date" id="data_nascimento" name="data_nascimento" value="">
             </div>
 
             <div class="form-group">
@@ -258,28 +258,28 @@
 
             <div class="form-group">
                 <label for="endereco">Endereço:</label>
-                <input type="text" id="endereco" name="endereco" value=" endereco ">
+                <input type="text" id="endereco" name="endereco" value="  ">
             </div>
 
             <div class="form-group">
                 <label for="telefone">Telefone:</label>
-                <input type="text" id="telefone" name="telefone" placeholder="(XX) XXXX-XXXX" value="telefone">
+                <input type="text" id="telefone" name="telefone" placeholder="(XX) XXXX-XXXX" value="">
             </div>
 
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required value="{{ email }}">
+                <input type="email" id="email" name="email" required value=" email ">
                 <div id="email-erro" class="error-message"></div>
             </div>
 
             <div class="form-group">
                 <label for="data_membresia">Data de Membresia:</label>
-                <input type="date" id="data_membresia" name="data_membresia" value="{{ data_membresia }}">
+                <input type="date" id="data_membresia" name="data_membresia" value=" ">
             </div>
 
             <div class="form-group">
                 <label for="grupos">Grupos/Ministérios (separados por vírgula):</label>
-                <input type="text" id="grupos" name="grupos" value="{{ grupos }}">
+                <input type="text" id="grupos" name="grupos" value=" ">
             </div>
 
             <div id="mensagem-erro" class="error-message">{{ mensagem_erro }}</div>
